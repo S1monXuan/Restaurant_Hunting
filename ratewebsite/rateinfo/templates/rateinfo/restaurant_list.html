@@ -1,0 +1,29 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+        Restaurant List
+{% endblock %}
+
+{% block content %}
+    <h2>Restaurant List</h2>
+        <form method="get">
+            <input type="text" name="q" class="form-control" placeholder="Input Restaurant Name">
+            <button type="submit">Search Restaurant</button>
+        </form>
+    <div>
+    {% if perms.rateinfo.add_restaurant %}
+        <a href = '{% url 'rateinfo_restaurant_create_urlpattern' %}'>
+            Create a new Restaurant
+        </a>
+    {% endif %}
+    </div>
+    <ul>
+        {% for restaurant in restaurant_list %}
+            <li>
+                <a href="{{ restaurant.get_absolute_url }}"> {{ restaurant }} </a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no restaurant available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

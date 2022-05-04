@@ -1,0 +1,26 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Section
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Section</h2>
+        <p>
+            You may not delete type {{ type }}.  This
+            type is currently assigned to the following
+            comment:
+        </p>
+
+        <ul>
+            {% for comment in comment_list %}
+            <li><a href="{{ comment.get_absolute_url }}">{{ comment.comment_text }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'rateinfo_type_list_urlpattern' %}">type List</a>.
+        </p>
+    </div>
+{% endblock %}

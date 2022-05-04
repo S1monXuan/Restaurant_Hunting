@@ -1,0 +1,44 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Comment - {{ comment.comment_id }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ comment }}</h2>
+    <ul>
+        {% if perms.rateinfo.change_comment %}
+        <li>
+            <a href = "{{ comment.get_update_url }}">Edit Comment</a>
+        </li>
+        {% endif %}
+
+        {% if perms.rateinfo.delete_comment %}
+        <li>
+            <a href = "{{ comment.get_delete_url }}">Delete This Comment</a>
+        </li>
+        {% endif %}
+    </ul>
+    <section>
+        <table>
+            <tr>
+                <th>Restaurant:</th>
+                <td><a href="{{ comment.comment_restaurant_id.get_absolute_url }}">{{ comment.comment_restaurant_id.restaurant_name}}</a></td>
+            </tr>
+            <tr>
+                <th>Rating:</th>
+                <td><a href="">{{ comment.comment_level }}</a></td>
+            </tr>
+            <tr>
+                <th>Comment Time:</th>
+                <td><a href="">{{ comment.comment_section_id.section_season_id.season }} - {{ comment.comment_section_id.section_year_id.year }}</a></td>
+            </tr>
+            <tr>
+                <th>Comment Text:</th>
+                <td><a href="">{{ comment.comment_text }}</a></td>
+            </tr>
+        </table>
+
+    </section>
+
+{% endblock %}

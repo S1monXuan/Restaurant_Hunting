@@ -1,0 +1,15 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Create New Place
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'rateinfo_place_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create New Place</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+        Place List
+{% endblock %}
+
+{% block content %}
+    <h2>Place List</h2>
+    <div>
+        <form method="get">
+            <input type="text" name="q" class="form-control" placeholder="Input street">
+            <button type="submit">Search street</button>
+            <br><br>
+            <input type="text" name="p" class="form-control" placeholder="Input Places">
+            <button type="submit">Search position</button>
+        </form>
+        <br>
+        {% if perms.rateinfo.add_place %}
+        <a href = '{% url 'rateinfo_place_create_urlpattern' %}'>
+            Add a New Place
+        </a>
+        {% endif %}
+    </div>
+    <ul>
+        {% for place in place_list %}
+            <li>
+                <a href="{{place.get_absolute_url}}"> {{ place }} </a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no place available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

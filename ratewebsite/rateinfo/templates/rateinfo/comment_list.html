@@ -1,0 +1,29 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+        Comments list
+{% endblock %}
+
+{% block content %}
+    <h2>Comment List</h2>
+    <div>
+        <form method="get">
+            <input type="text" name="q" class="form-control" placeholder="Input Comment Text">
+            <button type="submit">Search Comment</button>
+        </form>
+        {% if perms.rateinfo.add_comment %}
+        <a href = '{% url 'rateinfo_comment_create_urlpattern' %}'>
+            Add a New Comment
+        </a>
+        {% endif %}
+    </div>
+    <ul>
+        {% for comment in comment_list %}
+            <li>
+                <a href="{{comment.get_absolute_url}}"> {{ comment }} - </a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no type available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

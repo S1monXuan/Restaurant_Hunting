@@ -1,0 +1,29 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+        Holder List
+{% endblock %}
+
+{% block content %}
+    <h2>Holder List</h2>
+    <form method="get">
+            <input type="text" name="q" class="form-control" placeholder="Input Holder Name">
+            <button type="submit">Search Holders</button>
+        </form>
+    <div>
+    {% if perms.rateinfo.add_holder %}
+        <a href = '{% url 'rateinfo_holder_create_urlpattern' %}'>
+            Sign Up as Holder
+        </a>
+    {% endif %}
+    </div>
+    <ul>
+        {% for holder in holder_list %}
+            <li>
+                <a href="{{ holder.get_absolute_url }}"> {{ holder }} </a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no holder available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

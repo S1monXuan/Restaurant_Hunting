@@ -1,0 +1,44 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Section - {{ section }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ section }}</h2>
+    <ul>
+    {% if perms.rateinfo.change_section %}
+        <li>
+            <a href = "{{ section.get_update_url }}">Edit this</a>
+        </li>
+        {% endif %}
+    {% if perms.rateinfo.delete_section %}
+        <li>
+            <a href = "{{ section.get_delete_url }}">Delete This section</a>
+        </li>
+    {% endif %}
+    </ul>
+    <section>
+        <table>
+            <tr>
+                <th>Section:</th>
+                <td><a href="">{{ section }}</a></td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <section>
+        <h3>Comment</h3>
+        <ul>
+            {% for comment in comment_list %}
+                <li>
+                    <a href="{{ comment.get_absolute_url }}">{{ comment.comment_text }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no comment for this course.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

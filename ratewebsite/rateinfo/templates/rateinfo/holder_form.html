@@ -1,0 +1,15 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Create Holder
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'rateinfo_holder_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up as Holder</button>
+    </form>
+{% endblock %}

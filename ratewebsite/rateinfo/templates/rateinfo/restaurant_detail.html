@@ -1,0 +1,80 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Restaurant - {{ restaurant }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ restaurant }}</h2>
+    <ul>
+    {% if perms.rateinfo.change_restaurant %}
+        <li>
+            <a href = "{{ restaurant.get_update_url }}">Edit Info</a>
+        </li>
+        {% endif %}
+    {% if perms.rateinfo.delete_restaurant %}
+        <li>
+            <a href = "{{ restaurant.get_delete_url }}">Delete This Restaurant</a>
+        </li>
+    {% endif %}
+    </ul>
+    <div>
+    {% if perms.rateinfo.add_comment %}
+        <a href = '{% url 'rateinfo_comment_create_urlpattern' %}'>
+            Add a New Comment
+        </a>
+    {% endif %}
+    </div>
+    <section>
+        <table>
+            <tr>
+                <th>Restaurant Name:</th>
+                <td><a href="">{{ restaurant.restaurant_name }}</a></td>
+            </tr>
+            <tr>
+                <th>Restaurant holder:</th>
+                <td>{{ restaurant.restaurant_holder_id.holder_name }}</td>
+            </tr>
+            <tr>
+                <th>Restaurant place:</th>
+                <td>{{ restaurant.restaurant_place_id.place_place }} - {{ restaurant.restaurant_place_id.place_street }}</td>
+            </tr>
+            <tr>
+                <th>Restaurant type:</th>
+                <td>{{ restaurant.restaurant_type.type_name }}</td>
+            </tr>
+        </table>
+
+    </section>
+
+    <section>
+        <h3>Rate detail</h3>
+        <ul>
+            {% for comment in comment_list %}
+                <li>
+                    <p>Rating:
+                        <a href="">{{ comment.comment_level }}</a>
+                    </p>
+                </li>
+                <li>
+                    <p>Season:
+                        <a href="">{{ comment.comment_section_id.section_year_id.year }} - {{ comment.comment_section_id.section_season_id.season }}</a>
+                    </p>
+                </li>
+                <li>
+                    <p>Customer:
+                        <a href="{{ comment.comment_customer_id.get_absolute_url }}">{{ comment.comment_customer_id.customer_name }}</a>
+                    </p>
+                </li>
+                <li>
+                    <p>Text:
+                        <a href="{{ comment.get_absolute_url }}">{{ comment.comment_text }}</a>
+                    </p>
+                </li>
+                <br>
+            {% empty %}
+                <li><em>There are currently no section for this course.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

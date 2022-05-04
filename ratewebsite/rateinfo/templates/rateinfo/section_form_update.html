@@ -1,0 +1,15 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Update Type
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ type.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Type</button>
+    </form>
+{% endblock %}

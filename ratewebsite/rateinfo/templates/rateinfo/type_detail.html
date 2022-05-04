@@ -1,0 +1,44 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Type - {{ type }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ type }}</h2>
+    <ul>
+    {% if perms.rateinfo.change_type %}
+        <li>
+            <a href = "{{ type.get_update_url }}">Edit this</a>
+        </li>
+        {% endif %}
+    {% if perms.rateinfo.delete_type %}
+        <li>
+            <a href = "{{ type.get_delete_url }}">Delete This type</a>
+        </li>
+    {% endif %}
+    </ul>
+    <section>
+        <table>
+            <tr>
+                <th>Type:</th>
+                <td><a href="">{{ type.type_name }}</a></td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <section>
+        <h3>Restaurant</h3>
+        <ul>
+            {% for restaurant in restaurant_list %}
+                <li>
+                    <a href="{{ restaurant.get_absolute_url }}">{{ restaurant.restaurant_name }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no section for this course.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

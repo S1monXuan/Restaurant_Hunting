@@ -1,0 +1,25 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+        Type Customer
+{% endblock %}
+
+{% block content %}
+    <h2>Customer List</h2>
+    <div>
+    {% if perms.rateinfo.add_customer %}
+        <a href = '{% url 'rateinfo_customer_create_urlpattern' %}'>
+            Add a New Customer
+        </a>
+    {% endif %}
+    </div>
+    <ul>
+        {% for customer in customer_list %}
+            <li>
+                <a href="{{customer.get_absolute_url}}"> {{ customer }} </a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no type available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

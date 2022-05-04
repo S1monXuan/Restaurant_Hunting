@@ -1,0 +1,19 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Delete Your Comment
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ comment.get_delete_url }}"
+        method="post">
+        {% csrf_token %}
+        <p>
+            Are you sure that you want to delete
+            Your Comment {{ comment.comment_text }}?
+        </p>
+        <a href="{{ comment.get_absolute_url }}">Cancel</a>
+        <button type="submit">Delete comment</button>
+    </form>
+{% endblock %}

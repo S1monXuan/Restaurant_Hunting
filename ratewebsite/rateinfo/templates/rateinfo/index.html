@@ -1,0 +1,18 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="offset-by-two eight columns">
+    <h2>Welcome to hunt your meal systems</h2>
+    {% if user.is_authenticated %}
+        <p>Welcome!</p>
+        {% else %}
+    <p>To use more function please <a href="{% url 'login_urlpattern' %}">Log in</a>.</p>
+    {% endif %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Place List - {{ place }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ place }}</h2>
+    <ul>
+    {% if perms.rateinfo.change_place %}
+        <li>
+            <a href = "{{ place.get_update_url }}">Edit Info</a>
+        </li>
+        {% endif %}
+    {% if perms.rateinfo.delete_place %}
+        <li>
+            <a href = "{{ place.get_delete_url }}">Delete This Place</a>
+        </li>
+    {% endif %}
+    </ul>
+    <section>
+        <table>
+            <tr>
+                <th>Street:</th>
+                <td><a href="">{{ place.place_street }}</a></td>
+            </tr>
+            <tr>
+                <th>Near:</th>
+                <td>{{ place.place_place }}</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <section>
+        <h3>Restaurant</h3>
+        <ul>
+            {% for restaurant in restaurant_list %}
+                <li>
+                    <a href="{{ restaurant.get_absolute_url }}">{{ restaurant.restaurant_name }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no section for this course.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

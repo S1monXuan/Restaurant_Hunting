@@ -1,0 +1,15 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Create Section
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'rateinfo_section_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create a New one!</button>
+    </form>
+{% endblock %}

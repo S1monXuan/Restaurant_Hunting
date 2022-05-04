@@ -1,0 +1,15 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Create Customer
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'rateinfo_type_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create a New one!</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Create Restaurant
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'rateinfo_restaurant_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Restaurant</button>
+    </form>
+{% endblock %}

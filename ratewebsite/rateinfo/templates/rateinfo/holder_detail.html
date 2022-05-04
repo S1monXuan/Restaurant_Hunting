@@ -1,0 +1,48 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Holder - {{ holder }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ holder }}</h2>
+    <ul>
+    {% if perms.rateinfo.change_holder %}
+        <li>
+            <a href = "{{ holder.get_update_url }}">Edit Info</a>
+        </li>
+        {% endif %}
+    {% if perms.rateinfo.delete_holder %}
+        <li>
+            <a href = "{{ holder.get_delete_url }}">Delete Holder</a>
+        </li>
+    {% endif %}
+    </ul>
+    <section>
+        <table>
+            <tr>
+                <th>Holder Name:</th>
+                <td><a href="{{ holder.get_absolute_url }}">{{ holder.holder_name }}</a></td>
+            </tr>
+            <tr>
+                <th>Contact Number:</th>
+                <td>{{ holder.holder_phone }}</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <section>
+        <h3>Restaurant</h3>
+        <ul>
+            {% for restauruant in restaurant_list %}
+                <li>
+                    <a href="{{ restaurant.get_absolute_url }}">{{ restauruant.restaurant_name }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no section for this course.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

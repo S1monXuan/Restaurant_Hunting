@@ -1,0 +1,15 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Update Your Restaurant Info
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ restaurant.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Your Restaurant Info</button>
+    </form>
+{% endblock %}

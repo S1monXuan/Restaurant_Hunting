@@ -1,0 +1,26 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Holder
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Holder</h2>
+        <p>
+            You may not delete holder {{ holder }}.  This
+            holder is currently assigned to the following
+            restaurant:
+        </p>
+
+        <ul>
+            {% for rest in restaurant %}
+            <li><a href="">{{ rest }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'rateinfo_holder_list_urlpattern' %}">Holder List</a>.
+        </p>
+    </div>
+{% endblock %}

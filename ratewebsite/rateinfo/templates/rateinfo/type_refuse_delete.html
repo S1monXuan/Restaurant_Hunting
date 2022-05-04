@@ -1,0 +1,26 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Restaurant
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Restaurant</h2>
+        <p>
+            You may not delete type {{ type }}.  This
+            type is currently assigned to the following
+            restaurant:
+        </p>
+
+        <ul>
+            {% for restaurant in restaurant_list %}
+            <li><a href="{{ restaurant.get_absolute_url }}">{{ restaurant.restaurant_name }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'rateinfo_type_list_urlpattern' %}">type List</a>.
+        </p>
+    </div>
+{% endblock %}
