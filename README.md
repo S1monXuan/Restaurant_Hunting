@@ -11,9 +11,6 @@ This project developed in Python 3.9.2 and Django 3.2.5
 
 Roles             AccountName	    Password
 
-
-tester(SuperUser)	tester	        iSchoolUI
-
 SuperUser	        sysadmin	      secret1!
 
 Customer	        customer	      secret1!
