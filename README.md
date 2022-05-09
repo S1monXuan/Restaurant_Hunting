@@ -1,4 +1,6 @@
-##### final project for U OF I IS 439
+##### Web development using django
+
+For web application course final project of IS 439
 
 1. Running Environment
 This project developed in Python 3.9.2 and Django 3.2.5
