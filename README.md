@@ -5,11 +5,11 @@ For web application course final project of IS 439
 ###### Running Environment
 This project developed in Python 3.9.2 and Django 3.2.5
 
-######Description of Hunt Your Meal System
+###### Description of Hunt Your Meal System
 	Hunt Your Meal System is a restaurant rating system where users can share their comments on specific restaurant. Users would be group as customers and restaurant holders.
 	For customers, they can upload their comments to specific restaurant from restaurant page or comment list pages. For holders, they have the right to add new restaurant and view customers’ view. Besides, I also set system manager can edit both comment and restaurant information. 
 
-######List of user ID and password
+###### List of user ID and password
 
 |Roles|AccountName|Password|
 |-----|-----------|--------|
