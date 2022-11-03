@@ -1,6 +1,7 @@
 ##### Web development using django
 
 For web application course final project of IS 439
+It is been deployed on [PythonAnywhere](http://xinmaix2.pythonanywhere.com/) 
 
 ###### Running Environment
 This project developed in Python 3.9.2 and Django 3.2.5
