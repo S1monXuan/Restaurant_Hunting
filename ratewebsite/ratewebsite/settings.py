@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4nzfc5v5#5pc2hwqw*!@%^9tj)!qn1=gmovuscxyunawe_a)m&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -114,7 +114,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/rateinfo/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]

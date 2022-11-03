@@ -16,13 +16,14 @@
             <input type="text" name="q" class="searchTerm" placeholder="Input Holder Name">
             <button type="submit" class="searchButton">Search</button>
         </form>
-    <div class="CreateButton">
+
     {% if perms.rateinfo.add_holder %}
+    <div class="CreateButton">
         <a href = '{% url 'rateinfo_holder_create_urlpattern' %}'>
             Sign Up as Holder
         </a>
-    {% endif %}
     </div>
+    {% endif %}
     <ul class="item-list">
         {% for holder in holder_list %}
             <li>

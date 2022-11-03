@@ -19,13 +19,13 @@
                 <i class="fa fa-search"></i>
             </button>
         </form>
-    <div class="CreateButton">
     {% if perms.rateinfo.add_restaurant %}
+        <div class="CreateButton">
         <a href = '{% url 'rateinfo_restaurant_create_urlpattern' %}'>
             Create a new Restaurant
         </a>
+            </div>
     {% endif %}
-    </div>
     <ul class="item-list">
         {% for restaurant in restaurant_list %}
             <li>

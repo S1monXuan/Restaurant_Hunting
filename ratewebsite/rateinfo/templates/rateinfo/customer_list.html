@@ -12,13 +12,13 @@
 
 {% block content %}
     <h2>Customer List</h2>
-    <div class="CreateButton">
     {% if perms.rateinfo.add_customer %}
+        <div class="CreateButton">
         <a href = '{% url 'rateinfo_customer_create_urlpattern' %}'>
             Add a New Customer
         </a>
+        </div>
     {% endif %}
-    </div>
     <ul class="item-list">
         {% for customer in customer_list %}
             <li>

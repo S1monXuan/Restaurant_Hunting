@@ -12,13 +12,13 @@
 
 {% block content %}
     <h2>Section List</h2>
-    <div class="CreateButton">
     {% if perms.rateinfo.add_section %}
+            <div class="CreateButton">
         <a href = '{% url 'rateinfo_section_create_urlpattern' %}'>
             Add a New Section
         </a>
+            </div>
     {% endif %}
-    </div>
     <ul class="item-list">
         {% for section in section_list %}
             <li>

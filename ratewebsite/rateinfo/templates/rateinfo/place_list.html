@@ -23,13 +23,13 @@
             <button type="submit" class="searchButton">Search</button>
         </form>
         <br>
-    <div class="CreateButton">
         {% if perms.rateinfo.add_place %}
-        <a href = '{% url 'rateinfo_place_create_urlpattern' %}'>
+            <div class="CreateButton">
+            <a href = '{% url 'rateinfo_place_create_urlpattern' %}'>
             Add a New Place
         </a>
+            </div>
         {% endif %}
-    </div>
     <ul class="item-list">
         {% for place in place_list %}
             <li>

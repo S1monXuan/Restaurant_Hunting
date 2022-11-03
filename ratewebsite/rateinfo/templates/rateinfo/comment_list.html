@@ -17,13 +17,13 @@
             <input type="text" name="q" class="searchTerm" placeholder="Input Comment Text">
             <button type="submit" class="searchButton">Search</button>
         </form>
-    <div class="CreateButton">
         {% if perms.rateinfo.add_comment %}
-        <a href = '{% url 'rateinfo_comment_create_urlpattern' %}'>
+            <div class="CreateButton">
+            <a href = '{% url 'rateinfo_comment_create_urlpattern' %}'>
             Add a New Comment
         </a>
+            </div>
         {% endif %}
-    </div>
     <ul class="item-list">
         {% for comment in comment_list %}
             <li>
