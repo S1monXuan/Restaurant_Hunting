@@ -1,5 +1,12 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/update.css' %}">
+    {% endblock %}
+
+
 {% block title %}
     Create Customer
 {% endblock %}
@@ -10,6 +17,6 @@
         method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Submit Your Comments!</button>
+        <button type="submit" class="CreateButton">Submit Your Comments!</button>
     </form>
 {% endblock %}

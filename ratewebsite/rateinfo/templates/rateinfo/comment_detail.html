@@ -1,12 +1,20 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/details.css' %}">
+    {% endblock %}
+
 {% block title %}
     Comment - {{ comment.comment_id }}
 {% endblock %}
 
 {% block content %}
     <h2>{{ comment }}</h2>
-    <ul>
+    <div class="detail-container">
+    <div class="detail-info">
+    <ul class="detail-edit">
         {% if perms.rateinfo.change_comment %}
         <li>
             <a href = "{{ comment.get_update_url }}">Edit Comment</a>
@@ -19,8 +27,9 @@
         </li>
         {% endif %}
     </ul>
+
     <section>
-        <table>
+        <table class="detail-table">
             <tr>
                 <th>Restaurant:</th>
                 <td><a href="{{ comment.comment_restaurant_id.get_absolute_url }}">{{ comment.comment_restaurant_id.restaurant_name}}</a></td>
@@ -40,5 +49,6 @@
         </table>
 
     </section>
-
+    </div>
+    </div>
 {% endblock %}

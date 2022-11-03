@@ -1,12 +1,20 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/details.css' %}">
+    {% endblock %}
+
 {% block title %}
     Type - {{ type }}
 {% endblock %}
 
 {% block content %}
     <h2>{{ type }}</h2>
-    <ul>
+    <div class="detail-container">
+    <div class="detail-info">
+    <ul class="detail-edit">
     {% if perms.rateinfo.change_type %}
         <li>
             <a href = "{{ type.get_update_url }}">Edit this</a>
@@ -19,7 +27,7 @@
     {% endif %}
     </ul>
     <section>
-        <table>
+        <table class="detail-table">
             <tr>
                 <th>Type:</th>
                 <td><a href="">{{ type.type_name }}</a></td>
@@ -28,17 +36,23 @@
         </table>
 
     </section>
-
+</div>
+<div class="detail-full">
     <section>
         <h3>Restaurant</h3>
         <ul>
             {% for restaurant in restaurant_list %}
+            <div class="detail-full-list">
+                <br />
                 <li>
                     <a href="{{ restaurant.get_absolute_url }}">{{ restaurant.restaurant_name }}</a>
                 </li>
+            </div>
             {% empty %}
                 <li><em>There are currently no section for this course.</em></li>
             {% endfor %}
         </ul>
     </section>
+    </div>
+    </div>
 {% endblock %}

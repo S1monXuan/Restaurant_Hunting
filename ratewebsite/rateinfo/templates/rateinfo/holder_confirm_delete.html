@@ -1,5 +1,11 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/update.css' %}">
+    {% endblock %}
+
 {% block title %}
     Delete Holder
 {% endblock %}
@@ -13,7 +19,7 @@
             Are you sure that you want to delete
             holder {{ holder }}?
         </p>
-        <a href="{{ holder.get_absolute_url }}">Cancel</a>
-        <button type="submit">Delete Holder</button>
+        <a href="{{ holder.get_absolute_url }}" class="refuse-del-a">Cancel</a>
+        <button type="submit" class="CreateButton">Delete Holder</button>
     </form>
 {% endblock %}

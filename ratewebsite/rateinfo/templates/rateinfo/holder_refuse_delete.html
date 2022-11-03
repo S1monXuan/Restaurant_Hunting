@@ -1,5 +1,11 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/update.css' %}">
+    {% endblock %}
+
 {% block title %}
     Error Deleting Holder
 {% endblock %}
@@ -15,12 +21,12 @@
 
         <ul>
             {% for rest in restaurant %}
-            <li><a href="">{{ rest }}</a></li>
+            <li class="refuse-li"><a href="">{{ rest }}</a></li>
             {%  endfor %}
         </ul>
 
         <p>
-            Return to <a href="{% url 'rateinfo_holder_list_urlpattern' %}">Holder List</a>.
+            Return to <a href="{% url 'rateinfo_holder_list_urlpattern' %}" class="refuse-del-a">Holder List</a>.
         </p>
     </div>
 {% endblock %}

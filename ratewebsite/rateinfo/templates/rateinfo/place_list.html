@@ -1,27 +1,36 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/lists.css' %}">
+    {% endblock %}
+
 {% block title %}
         Place List
 {% endblock %}
 
 {% block content %}
     <h2>Place List</h2>
-    <div>
-        <form method="get">
-            <input type="text" name="q" class="form-control" placeholder="Input street">
-            <button type="submit">Search street</button>
-            <br><br>
-            <input type="text" name="p" class="form-control" placeholder="Input Places">
-            <button type="submit">Search position</button>
+        <form class="search" method="get">
+            <input type="text" name="q" class="searchTerm" placeholder="Input street">
+            <button type="submit" class="searchButton">Search</button>
+{#            <br><br>#}
+        </form>
+    <br />
+        <form class="search" method="get">
+            <input type="text" name="p" class="searchTerm" placeholder="Input Places">
+            <button type="submit" class="searchButton">Search</button>
         </form>
         <br>
+    <div class="CreateButton">
         {% if perms.rateinfo.add_place %}
         <a href = '{% url 'rateinfo_place_create_urlpattern' %}'>
             Add a New Place
         </a>
         {% endif %}
     </div>
-    <ul>
+    <ul class="item-list">
         {% for place in place_list %}
             <li>
                 <a href="{{place.get_absolute_url}}"> {{ place }} </a>

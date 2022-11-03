@@ -1,5 +1,13 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/update.css' %}">
+    {% endblock %}
+
+{% load static %}
+
 {% block title %}
     Update Your Restaurant Info
 {% endblock %}
@@ -10,6 +18,6 @@
         method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Update Your Restaurant Info</button>
+        <button type="submit" class="CreateButton">Update Your Restaurant Info</button>
     </form>
 {% endblock %}

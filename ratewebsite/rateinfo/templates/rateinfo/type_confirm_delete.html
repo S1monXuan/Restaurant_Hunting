@@ -1,5 +1,11 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/update.css' %}">
+    {% endblock %}
+
 {% block title %}
     Delete Type
 {% endblock %}
@@ -13,7 +19,7 @@
             Are you sure that you want to delete
             type {{ type }}?
         </p>
-        <a href="{{ type.get_absolute_url }}">Cancel</a>
-        <button type="submit">Delete Type</button>
+        <a href="{{ type.get_absolute_url }}" class="refuse-del-a">Cancel</a>
+        <button type="submit" class="CreateButton">Delete Type</button>
     </form>
 {% endblock %}

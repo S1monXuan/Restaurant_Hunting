@@ -1,12 +1,20 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/details.css' %}">
+    {% endblock %}
+
 {% block title %}
     Section - {{ section }}
 {% endblock %}
 
 {% block content %}
     <h2>{{ section }}</h2>
-    <ul>
+    <div class="detail-container">
+    <div class="detail-info">
+    <ul class="detail-edit">
     {% if perms.rateinfo.change_section %}
         <li>
             <a href = "{{ section.get_update_url }}">Edit this</a>
@@ -19,7 +27,7 @@
     {% endif %}
     </ul>
     <section>
-        <table>
+        <table class="detail-table">
             <tr>
                 <th>Section:</th>
                 <td><a href="">{{ section }}</a></td>
@@ -28,17 +36,22 @@
         </table>
 
     </section>
-
+</div>
+<div class="detail-full">
     <section>
-        <h3>Comment</h3>
+        <h3>Comment In This Section</h3>
         <ul>
             {% for comment in comment_list %}
+            <div class="detail-full-list">
                 <li>
                     <a href="{{ comment.get_absolute_url }}">{{ comment.comment_text }}</a>
                 </li>
+            </div>
             {% empty %}
                 <li><em>There are currently no comment for this course.</em></li>
             {% endfor %}
         </ul>
     </section>
+    </div>
+    </div>
 {% endblock %}

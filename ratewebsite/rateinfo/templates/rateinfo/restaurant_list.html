@@ -1,23 +1,32 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/lists.css' %}">
+    {% endblock %}
+
 {% block title %}
         Restaurant List
 {% endblock %}
 
 {% block content %}
     <h2>Restaurant List</h2>
-        <form method="get">
-            <input type="text" name="q" class="form-control" placeholder="Input Restaurant Name">
-            <button type="submit">Search Restaurant</button>
+        <form class="search" method="get">
+            <input type="text" name="q" class="searchTerm" placeholder="Input Restaurant Name">
+            <button type="submit" class="searchButton">
+                Search
+                <i class="fa fa-search"></i>
+            </button>
         </form>
-    <div>
+    <div class="CreateButton">
     {% if perms.rateinfo.add_restaurant %}
         <a href = '{% url 'rateinfo_restaurant_create_urlpattern' %}'>
             Create a new Restaurant
         </a>
     {% endif %}
     </div>
-    <ul>
+    <ul class="item-list">
         {% for restaurant in restaurant_list %}
             <li>
                 <a href="{{ restaurant.get_absolute_url }}"> {{ restaurant }} </a>

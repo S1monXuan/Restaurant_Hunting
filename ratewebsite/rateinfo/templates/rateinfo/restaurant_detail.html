@@ -1,24 +1,33 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/details.css' %}">
+    {% endblock %}
+
 {% block title %}
     Restaurant - {{ restaurant }}
 {% endblock %}
 
 {% block content %}
     <h2>{{ restaurant }}</h2>
-    <ul>
-    {% if perms.rateinfo.change_restaurant %}
-        <li>
-            <a href = "{{ restaurant.get_update_url }}">Edit Info</a>
-        </li>
+    <div class="detail-container">
+    <div class="detail-info">
+    <ul class="detail-edit">
+        {% if perms.rateinfo.change_restaurant %}
+            <li>
+                <a href = "{{ restaurant.get_update_url }}">Edit Info</a>
+            </li>
+            {% endif %}
+        {% if perms.rateinfo.delete_restaurant %}
+            <li>
+                <a href = "{{ restaurant.get_delete_url }}">Delete This Restaurant</a>
+            </li>
         {% endif %}
-    {% if perms.rateinfo.delete_restaurant %}
-        <li>
-            <a href = "{{ restaurant.get_delete_url }}">Delete This Restaurant</a>
-        </li>
-    {% endif %}
-    </ul>
-    <div>
+        </ul>
+
+    <div class="detail-add">
     {% if perms.rateinfo.add_comment %}
         <a href = '{% url 'rateinfo_comment_create_urlpattern' %}'>
             Add a New Comment
@@ -26,7 +35,7 @@
     {% endif %}
     </div>
     <section>
-        <table>
+        <table class="detail-table">
             <tr>
                 <th>Restaurant Name:</th>
                 <td><a href="">{{ restaurant.restaurant_name }}</a></td>
@@ -46,11 +55,14 @@
         </table>
 
     </section>
-
+</div>
+<div class="detail-full">
     <section>
         <h3>Rate detail</h3>
         <ul>
             {% for comment in comment_list %}
+            <div class="detail-full-list">
+                <br />
                 <li>
                     <p>Rating:
                         <a href="">{{ comment.comment_level }}</a>
@@ -71,10 +83,12 @@
                         <a href="{{ comment.get_absolute_url }}">{{ comment.comment_text }}</a>
                     </p>
                 </li>
-                <br>
+            </div>
             {% empty %}
                 <li><em>There are currently no section for this course.</em></li>
             {% endfor %}
         </ul>
     </section>
+    </div>
+    </div>
 {% endblock %}

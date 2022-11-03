@@ -1,5 +1,11 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/update.css' %}">
+    {% endblock %}
+
 {% block title %}
     Delete Your Comment
 {% endblock %}
@@ -14,6 +20,6 @@
             Your Comment {{ comment.comment_text }}?
         </p>
         <a href="{{ comment.get_absolute_url }}">Cancel</a>
-        <button type="submit">Delete comment</button>
+        <button type="submit" class="CreateButton">Delete comment</button>
     </form>
 {% endblock %}

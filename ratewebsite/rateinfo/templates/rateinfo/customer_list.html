@@ -1,19 +1,25 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/lists.css' %}">
+    {% endblock %}
+
 {% block title %}
         Type Customer
 {% endblock %}
 
 {% block content %}
     <h2>Customer List</h2>
-    <div>
+    <div class="CreateButton">
     {% if perms.rateinfo.add_customer %}
         <a href = '{% url 'rateinfo_customer_create_urlpattern' %}'>
             Add a New Customer
         </a>
     {% endif %}
     </div>
-    <ul>
+    <ul class="item-list">
         {% for customer in customer_list %}
             <li>
                 <a href="{{customer.get_absolute_url}}"> {{ customer }} </a>

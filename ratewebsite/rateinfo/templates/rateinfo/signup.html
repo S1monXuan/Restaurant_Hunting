@@ -1,5 +1,11 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/update.css' %}">
+    {% endblock %}
+
 {% block title %}Login{% endblock %}
 
 {% block content %}
@@ -7,7 +13,7 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">
+    <button type="submit" class="CreateButton">
 {#		class="button button-primary">#}
     	Sign Up</button>
   </form>

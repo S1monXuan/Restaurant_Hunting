@@ -1,23 +1,30 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/lists.css' %}">
+    {% endblock %}
+
 {% block title %}
         Comments list
 {% endblock %}
 
 {% block content %}
     <h2>Comment List</h2>
-    <div>
-        <form method="get">
-            <input type="text" name="q" class="form-control" placeholder="Input Comment Text">
-            <button type="submit">Search Comment</button>
+
+        <form class="search" method="get">
+            <input type="text" name="q" class="searchTerm" placeholder="Input Comment Text">
+            <button type="submit" class="searchButton">Search</button>
         </form>
+    <div class="CreateButton">
         {% if perms.rateinfo.add_comment %}
         <a href = '{% url 'rateinfo_comment_create_urlpattern' %}'>
             Add a New Comment
         </a>
         {% endif %}
     </div>
-    <ul>
+    <ul class="item-list">
         {% for comment in comment_list %}
             <li>
                 <a href="{{comment.get_absolute_url}}"> {{ comment }} - </a>

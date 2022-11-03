@@ -1,23 +1,29 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/lists.css' %}">
+    {% endblock %}
+
 {% block title %}
         Type List
 {% endblock %}
 
 {% block content %}
     <h2>Type List</h2>
-    <div>
-        <form method="get">
-            <input type="text" name="q" class="form-control" placeholder="Input Holder Name">
-            <button type="submit">Search Holder</button>
+        <form class="search" method="get">
+            <input type="text" name="q" class="searchTerm" placeholder="Input Holder Name">
+            <button type="submit" class="searchButton">Search</button>
         </form>
+    <div class="CreateButton">
         {% if perms.rateinfo.add_type %}
         <a href = '{% url 'rateinfo_type_create_urlpattern' %}'>
             Add a New Type
         </a>
         {% endif %}
     </div>
-    <ul>
+    <ul class="item-list">
         {% for type in type_list %}
             <li>
                 <a href="{{ type.get_absolute_url }}"> {{ type }} </a>

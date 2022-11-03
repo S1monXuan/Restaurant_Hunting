@@ -1,12 +1,20 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/details.css' %}">
+    {% endblock %}
+
 {% block title %}
     Customer - {{ customer.customer_name }}
 {% endblock %}
 
 {% block content %}
     <h2>{{ customer }}</h2>
-    <ul>
+    <div class="detail-container">
+    <div class="detail-info">
+    <ul class="detail-edit">
     {% if perms.rateinfo.change_customer %}
         <li>
             <a href = "{{ customer.get_update_url }}">Edit Info</a>
@@ -19,7 +27,7 @@
     {% endif %}
     </ul>
     <section>
-        <table>
+        <table class="detail-table">
             <tr>
                 <th>Customer Name:</th>
                 <td><a href="{{ customer.get_absolute_url }}">{{ customer.customer_name }}</a></td>
@@ -31,11 +39,13 @@
         </table>
 
     </section>
-
+</div>
+<div class="detail-full">
     <section>
         <h3>Comment History</h3>
         <ul>
             {% for comment in comment_list %}
+            <div class="detail-full-list">
                 <li>
                     <p>Restaurant: <a href="{{ comment.comment_restaurant_id.get_absolute_url }}">{{ comment.comment_restaurant_id.restaurant_name }}</a></p>
                 </li>
@@ -49,9 +59,12 @@
                     <p>Comment Text: <a href="">{{ comment.comment_text }}</a></p>
                 </li>
                 <br>
+            </div>
             {% empty %}
-                <li><em>There are currently no section for this course.</em></li>
+                <li><em>There are currently no comment published by this user.</em></li>
             {% endfor %}
         </ul>
     </section>
+    </div>
+    </div>
 {% endblock %}

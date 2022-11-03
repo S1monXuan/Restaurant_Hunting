@@ -1,23 +1,29 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/lists.css' %}">
+    {% endblock %}
+
 {% block title %}
         Holder List
 {% endblock %}
 
 {% block content %}
     <h2>Holder List</h2>
-    <form method="get">
-            <input type="text" name="q" class="form-control" placeholder="Input Holder Name">
-            <button type="submit">Search Holders</button>
+    <form class="search" method="get">
+            <input type="text" name="q" class="searchTerm" placeholder="Input Holder Name">
+            <button type="submit" class="searchButton">Search</button>
         </form>
-    <div>
+    <div class="CreateButton">
     {% if perms.rateinfo.add_holder %}
         <a href = '{% url 'rateinfo_holder_create_urlpattern' %}'>
             Sign Up as Holder
         </a>
     {% endif %}
     </div>
-    <ul>
+    <ul class="item-list">
         {% for holder in holder_list %}
             <li>
                 <a href="{{ holder.get_absolute_url }}"> {{ holder }} </a>

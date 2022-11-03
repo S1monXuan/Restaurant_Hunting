@@ -1,5 +1,11 @@
 {% extends 'rateinfo/base.html' %}
 
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'rateinfo/update.css' %}">
+    {% endblock %}
+
 {% block title %}
     Error Deleting Section
 {% endblock %}
@@ -15,12 +21,12 @@
 
         <ul>
             {% for comment in comment_list %}
-            <li><a href="{{ comment.get_absolute_url }}">{{ comment.comment_text }}</a></li>
+            <li class="refuse-li"><a href="{{ comment.get_absolute_url }}">{{ comment.comment_text }}</a></li>
             {%  endfor %}
         </ul>
 
         <p>
-            Return to <a href="{% url 'rateinfo_type_list_urlpattern' %}">type List</a>.
+            Return to <a href="{% url 'rateinfo_type_list_urlpattern' %}" class="refuse-del-a">type List</a>.
         </p>
     </div>
 {% endblock %}
